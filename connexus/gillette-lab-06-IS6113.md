@@ -39,7 +39,7 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 - **1.1.4 Packet Tracer - Structured Cabling in the Workspace:**  
   This activity focused on creating realistic structured cabling in Cisco Packet Tracer by simulating the installation and connection of network infrastructure. Learners installed patch panels and wall mounts, connected switch ports to patch panel jacks, and routed cables from wall mounts to end-user devices like PCs and printers. The activity emphasized best practices such as cable organization, color coding, and the use of bend points to simulate clean, real-world cable management.
 
-  [capture06](./assets/IS3413_lab06_capture06.PNG)
+  ![capture06](./assets/IS3413_lab06_capture06.PNG)
 
 - **1.1.5 Connect Devices Using Wired and Wireless Technologies:**  
   This section covered the importance of understanding both wired and wireless technologies in modern networking. It emphasized the configuration of Wi-Fi networks and host devices, while also introducing Bluetooth and cellular data as additional wireless communication methods.
@@ -47,7 +47,7 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 - **1.1.6 Packet Tracer - Connect Devices Using Wireless Technologies:**  
  This activity explored how to connect devices using various wireless technologies within Cisco Packet Tracer’s Physical Mode.** Learners connected a laptop to a wireless LAN using a wireless module, paired a tablet with a Bluetooth speaker to play music, and tethered a laptop to a smartphone via Bluetooth to access a website through the cellular network. The exercise emphasized practical use of wireless standards like Wi-Fi and Bluetooth for real-world networking scenarios.
 
- [capture07](./assets/IS3413_lab06_capture07.PNG)
+ ![capture07](./assets/IS3413_lab06_capture07.PNG)
 
 - **1.1.7 Video - Explore Device Configuration Using CLI:**  
   This section introduced how to configure networking devices in Cisco Packet Tracer using both the graphical Config tab and the Command Line Interface (CLI). It explained the different operational modes in Cisco IOS, such as user exec, privileged exec, and global configuration mode, and demonstrated how to change basic settings like device names. The video emphasized the importance of saving configurations to ensure persistence after device restarts.
@@ -55,7 +55,7 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 - **1.1.8 Packet Tracer - Explore Device Configuration Using CLI:**  
   This activity guided learners through configuring a network switch using the command-line interface via a console connection in Packet Tracer. Students accessed the switch with terminal emulation, entered privileged and global configuration modes, and applied settings such as hostname and console password. The exercise concluded with saving the configuration to startup memory, reinforcing the process of making persistent changes on Cisco devices.
 
-  [capture08](./assets/IS3413_lab06_capture08.PNG)
+  ![capture08](./assets/IS3413_lab06_capture08.PNG)
 
 ---
 
@@ -72,7 +72,7 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 - **2.0.3 Packet Tracer - Examine Packets in the Small Office:**  
   This activity focused on using Packet Tracer’s Simulation Mode to analyze network behavior by creating and inspecting both simple and complex PDUs. Learners created a basic ping between two devices to observe ICMP packet flow, examined protocol details using OSI model and header views, and configured a complex PDU to send periodic pings with custom parameters. The exercise reinforced how Simulation Mode can be used to test connectivity, troubleshoot issues, and explore how network protocols operate in real-time.
 
-  [capture09](./assets/IS3413_lab06_capture09.PNG)
+  ![capture09](./assets/IS3413_lab06_capture09.PNG)
 
 - **2.0.4 Video - Create, Arrange, Uncluster, Delete, and Connect Clusters:**  
   This section demonstrated how to create, manage, and interact with device clusters in Cisco Packet Tracer. It explained how to group devices into a cluster, rename and navigate within it, and connect clustered devices to external ones using manual cabling. The video also covered how to uncluster or permanently delete clusters, highlighting the flexibility and organization benefits of clustering in network design.
@@ -86,7 +86,7 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 - **2.0.7 Packet Tracer - Edit Topologies:**  
   This activity guided learners through editing a network topology in Packet Tracer by adding hardware, managing cabling, working with clusters, and documenting changes. Participants installed a new switch and connected it to a patch panel and an existing switch, added a PC to the network to verify connectivity, unclustered and re-clustered devices, and created a new “Second Home” cluster with a PC, home gateway, and cable modem. The activity emphasized structured topology design, logical organization using clusters, and documentation using annotation tools.
 
-  [capture10](./assets/IS3413_lab06_capture10.PNG)
+  ![capture10](./assets/IS3413_lab06_capture10.PNG)
 
 ### 2.1 Network Controller
 
@@ -99,7 +99,7 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 - **2.1.3 Packet Tracer - Monitor Your Network Using a Network Controller:**  
   This activity walked learners through implementing and using a Network Controller in Cisco Packet Tracer to monitor a network through its graphical interface. In Part 1, students connect the controller to a switch, verified network connectivity with ping tests, and accessed the controller via a web browser. In Part 2, we explored the controller’s dashboard, documented discovered devices using notes, and observed how the controller dynamically detected newly connected wireless devices through its discovery tools.
 
-  [capture11](./assets/IS3413_lab06_capture11.PNG)
+  ![capture11](./assets/IS3413_lab06_capture11.PNG)
 
 - **2.1.4 Video - Monitor Network Changes Using a Network Controller:**  
   This section demonstrated how to monitor network changes using the Network Controller in Cisco Packet Tracer. The video showed how to configure user credentials, initiate a device discovery process, and view details about discovered devices. It also covered how newly added devices—like switches—can be automatically identified and managed through the controller's centralized dashboard.
@@ -107,14 +107,14 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 - **2.1.5 Packet Tracer - Manage and Configure Your Network Using a Controller:**  
   This activity guided learners through deploying and using a Network Controller in Cisco Packet Tracer to manage and monitor devices on an office network. In Part 1, the controller was physically connected, configured with IP settings, and connectivity was verified. Part 2 focused on setting up user credentials, initiating a discovery process to identify existing devices, and interpreting discovery results. In Part 3, a new switch was added to the network, configured via CLI, and then detected by the controller through a refreshed discovery process.
 
-  [capture12](./assets/IS3413_lab06_capture12.PNG)
+  ![capture12](./assets/IS3413_lab06_capture12.PNG)
 
 ### 2.2 Course Summary
 
 - **2.2.1 Packet Tracer Tutored Activity - Troubleshoot a Wireless Connection:**  
   This section introduced a guided Packet Tracer Tutored Activity focused on troubleshooting a wireless connection. I can use hints, allowing them to build and practice diagnostic skills at their own pace. The activity emphasizes identifying and resolving issues in wireless connectivity.
 
-  [capture13](./assets/IS3413_lab06_capture13.PNG)
+  ![capture13](./assets/IS3413_lab06_capture13.PNG)
 
 - **2.2.2 Summary of the Course:**  
   This section summarized the key concepts covered across both modules of the course.Module 1 focused on setting up a small office network using structured cabling and wireless technologies, as well as exploring device configuration through tabs like Physical, Config, CLI, and Desktop. Module 2 emphasized monitoring and managing the network using Simulation mode, editing topologies, analyzing PDUs, and using a Network Controller for centralized management through a browser-based GUI. The course reinforced practical skills in network design, troubleshooting, and device configuration in a simulated environment.
@@ -125,7 +125,7 @@ In this lab, we used Cisco Packet Tracer to set up and manage a simulated small 
 
 - **Packet Tracer Course Final Exam Screenshot:**  
   
-  [capture14](./assets/IS3413_lab06_capture14.PNG)
+  ![capture14](./assets/IS3413_lab06_capture14.PNG)
 
 ---
 
