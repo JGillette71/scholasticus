@@ -104,7 +104,7 @@ In this activity, I created a custom IoT device in Packet Tracer—a Security Ca
 
 ![capture 9](./assets/IS3413_lab07_capture9.PNG)
 
-*Figure 9: IoT Devices added to the workspace**
+*Figure 9: IoT Devices added to the workspace*
 
 ---
 
@@ -122,7 +122,7 @@ In this activity, I enhanced the Security Camera IoT device by adding a second i
 
 ![capture 11](./assets/IS3413_lab07_capture11.PNG)
 
-*Figure 11: IoT Devices active in the workspace**
+*Figure 11: IoT Devices active in the workspace*
 
 ---
 
@@ -136,7 +136,7 @@ To complete the lab, I took a short five-question quiz covering key concepts suc
 
 ![capture 12](./assets/IS3413_lab07_capture12.PNG)
 
-*Figure 12: exam results**
+*Figure 12: exam results*
 
 ---
 
