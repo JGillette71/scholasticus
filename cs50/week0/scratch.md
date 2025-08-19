@@ -79,6 +79,74 @@ The trouble with the ASCII standard is that they only allocated 8-bits for upper
 
 In contrast, 32-bits would allow us to represent 4 billion different characters. This is the goal of an updated standard called **Unicode**. Unicode seeks to represent all human language past, present, and future, including pictograms like emojis. Unicode is backwards compatible with ASCII, so all english letter representations are the same.
 
+What about **UTF-8** versus **Unicode**? Unicode Transformation Format - 8-bit (UTF-8) is a encoding standard or schema for unicode standard representations.
+
 ## Representing Color
 
-STOP: Next section is color represetation (38:51) https://youtu.be/2WtPyqwTLKM?t=2328
+Like letters, colors are represented by a specific system of binary values, but in this case the values are translated into a color and rendered for each pixel.Each color representation consists of three values, **RGB** or *red-green-blue*. An RGB value typically consists of three bytes (or 24 bits).
+
+A single pixel may have a value (R:72, G:73, B:33) which renders as off-yellow. (In unicode 72, 73, 33 translates to "HI!").
+
+When you hear of camera resolution being expressed as megabyte (MB) we know that 1 Megabyte = 1,000,000 Bytes = 8,000,000 Bits. So if each pixel has three bytes, then we know 1 Megabyte = ~333,334 pixels.
+
+...and of course videos are just a sequence of images in terms of frames per second (FPS).
+
+## Representing Sound
+
+Like numbers, letters, and color, sound is represented by a standardized set of values each with a coresponding representation. An example might be a four byte set representing pitch, volume, duration, and waveform. However, we won't dive into this any more here.
+
+## Algorithms
+
+We now a surface level understanding of how binary represents human mediums like decimals, language, color, and sound.
+
+```mermaid
+flowchart LR
+    node1[01001000,<br>01001001,<br>00100001]
+    node2[program context]
+    node3["HI!"]
+
+    node1 --> node2
+    node2 --> node3
+```
+
+This program context can be considered an algorithim. **An algoritim is a ***precise*** description of how to do something.** Precise step-by-step instructions to reach a desired output given an input.
+
+Consider *divide and conquer* of phonebook versus page-by-page look-up or two-page-by-two-page lookup examples. These are precise instructions on how to solve the problem of finding the correct page in a phonebook.
+
+```mermaid
+xychart-beta
+    title "CS50 Phone Book — Candidates Remaining per Step (N = 32)"
+    x-axis "Step" [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    y-axis "Names Remaining" 0 --> 32
+    line "n (one-at-a-time)" [32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16]
+    line "n/2 (two-at-a-time)" [32,30,28,26,24,22,20,18,16,14,12,10,8,6,4,2,0]
+    line "log2(n) (binary search)" [32,16,8,4,2,1,0]
+```
+
+## Pseudocode
+
+The act of instructing a machine with a precise set of instructions is done with **code**. When we want to translate human instructions into code, we first perform an intermediate step to help use called pseudocode.
+
+Pseudocode allows us to write instructions that are logical, precise, and succinct yet in our own vernacular.
+
+```plaintext
+Pick up phonebook
+Open to middle of book
+Look for desired entry on page
+If desired entry on page
+    call entry
+Else if entry earlier in book
+    Open to middle of left half of book
+    Go back to step 3
+Else if desired entry in right half of the book
+    Open to middle of right half of book
+    Go back to step 3
+Else
+    quit task
+```
+
+In plain language we begin to capture key concepts like boolean expressions (yes/no), and conditional statements (if/else).
+
+## Artificial Intelligence
+
+Stoped at 1:03:43
