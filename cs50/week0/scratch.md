@@ -145,8 +145,57 @@ Else
     quit task
 ```
 
-In plain language we begin to capture key concepts like boolean expressions (yes/no), and conditional statements (if/else).
+In plain language we begin to capture key concepts like boolean expressions (yes/no), and conditional statements (if/else), functions "do", and loops "back".
 
 ## Artificial Intelligence
 
-Stoped at 1:03:43
+Obviously a popular topic today. Here is why it is applicable to basic programming. Take for example, a chat bot use case.
+
+In pseudocode, the programmer may write something like this:
+
+```plaintext
+If user says Hello
+    Say Hello
+Else if the user says Goodbye
+    Say Goodbye
+Else if the user says How are you?
+    Say Good, how are you?
+Else if the user asks why 111 in binary is 7 in decimal...
+```
+
+What becomes apparent is that the programmer is unlikely to capture all possible uses and the infinite number of conditionals. Instead we train language models to return statistically likely responses via volumes of training. At it's core, the language model is a neural network where weights are trained to output those likely responses.
+
+CS50 has its own large language model fine tuned to teach and guide student through computer science problems available at [cs50.ai](https://cs50.ai/).
+
+## Programming with Scratch
+
+Scratch is a graphical programming language that uses puzzle pieces to model logical operations. To use scratch, visit [scratch.mit.edu](https://scratch.mit.edu).
+
+Once you navigate to the "create" workspace, functions can be found on the left side toolbar. On the left hand side is a animated cat character. These characters are called a "sprite" and the goal is to program the actions of this sprite to perform operations like moving about its space. The two dimensional space where this character resides can be thought of like an X and Y axis.
+
+An example program might look like:
+
+```plaintext
+When green flag clicked
+    Say "Hello, world!"
+```
+
+```plaintext
+Ask user "what is your name?"
+If answer
+    Say "Hello, " + answer
+```
+
+```mermaid
+flowchart LR
+    node1[input:<br>Hello]
+    node2[input:<br>name]
+    node3[join]
+    node4[output:<br>Hello name]
+
+    node1 --> node3
+    node2 --> node3
+    node3 --> node4
+```
+
+

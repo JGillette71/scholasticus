@@ -250,3 +250,153 @@ Monitoring services include the following:
 - Set up timely alert mechanisms for for failures (Integrate Mattermost alerts?)
 - Integrate visualization dashboards with monitoring tools with services like **AWS Managed Grafana**.
 - Schedule periodic reviews to identify inefficiencies.
+
+---
+
+## Continuous Integration Continuous Delivery (CI/CD)
+
+Large or dispersed teams face several challenges across development efforts:
+
+- Problems coordinating efforts
+- Increased testing and deployment timeframes
+- Inconsistencies resulting in errors
+
+AWS offers several CI/CD tools to help solve these issues. The CI/CD approach involves building, testing, and deploying into development environments where coordinated testing and debugging can occur and finished with deployment to a production environment. An example CI/CD workflow may involve the following.
+
+```mermaid
+flowchart TD
+  %% CI/CD Workflow for AWS
+
+  A[Source Code / Git Repository] --> B[AWS CodePipeline]
+
+  %% Source retrieval
+  B --> C[Download Source Revision]
+
+  %% Build & test
+  C --> D[Build & Test Action]
+  D --> E[AWS CodeBuild<br/>Run Unit & Integration Tests]
+
+  E -->|Success| F[(S3 Artifacts Bucket)]
+
+  %% Dev deploy
+  B --> G[Invoke AWS CodeDeploy in Dev]
+  F --> G
+  G --> H[Deploy to Dev Environment]
+
+  %% Manual verification
+  H --> I{Manual Tests by Developers}
+  I -->|Fail| R[Notify / Iterate]
+  R --> A
+
+  %% Prod deploy (on approval/pass)
+  I -->|Pass| J[Invoke AWS CodeDeploy in Prod]
+  F --> J
+  J --> K[Deploy to Production Environment]
+
+  %% Grouping for clarity
+  subgraph DEV[Dev Account]
+    E
+    G
+    H
+  end
+
+  subgraph PROD[Prod Account]
+    J
+    K
+  end
+
+  subgraph SHARED[Shared Services]
+    F
+  end
+```
+
+Tools of note:
+
+1. AWS Code Pipeline performs the Continuous Integration (CI) by automatically initiating the build process as new code is committed to the repository.
+2. AWS Code Build compiles the code, runs unit tests, and generates deployment artifacts, such as JAR files and ZIP files.
+3. AWS Code Deploy automates deployments to provisioned compute resources like AWS EC2.
+4. AWS S3 provides secure and scalable object storage for code artifacts.
+
+Additional tools can be integrated like AWS Cloud Watch to support monitoring and logging.
+
+## Infrastructure as Code (IaC)
+
+IaC emerged as a response to traditional infrastructure provisioning where engineers used custom scrips and manual processes. Environments created in this manner are often unreliable, inconsistent, and not repeatable. The solution has been a programmatic approach to provisioning where code and version control ensure each environment remains replicable.
+
+**IaC** - managing and provisioning infrastructure through machine-readable definition files instead of physical hardware configuration or interactive configuration tools.
+
+Multiple IaC tools exist in the AWS ecosystem:
+
+- **AWS CloudFormation** - AWS deploys the system defined by a JSON or YAML template, which represents a blueprint of the infrastructure.
+- **AWS Cloud Development Kit** (AWS CDK) - define and deploy AWS resources using programming languages like TypeScript, Python, Java, and C#. Instead of using declarative templates, you write imperative code to define your infrastructure.
+- **HashiCorp TerraForm** - deploy workflows employing AWS services.
+
+Some features of IaC templates include:
+
+- Lists AWS resources and their configurations
+- Defines relationships between resources, e.g. security group
+- Ensures consistent deployment across environments
+
+Example of simple Cloud Formation Template:
+
+```yaml
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: 'Example CloudFormation Template'
+
+Parameters:
+  EnvironmentName:
+    Description: 'env name will be prefixed to resource names'
+    Type: String
+    Default: 'dev'
+
+  InstanceType:
+    Description: 'EC2 instance type'
+    Type: String
+    Default: 't2.micro'
+    AllowedValues:
+      - 't2.micro'
+      - 't2.small'
+      - 't2.medium'
+
+  KeyPairName:
+    Description: 'EC2 Key Pair to use for instances'
+    Type: 'AWS::EC2::KeyPair::KeyName'
+
+  Resources:
+    MyEc2Instance:
+      Type: 'AWS::EC2::Instance'
+      Properties:
+        ImageId: 'ami-0cif7528ff583bf9a'
+        InstanceType: !Ref InstanceType
+        KeyName: !Ref KeyPairName
+        SecurityGroups:
+          - !Ref MyEc2SecurityGroup
+        Tags:
+          - Key: 'Name'
+            Value: !Sub '${EnvironmentName}-instance`
+
+etc...
+```
+
+## AWS Serverless Application Model (AWS SAM)
+
+Serverless Applications - Developer focuses on writing the applications code, meanwhile AWS services manage all the necessary compute, storage, database, and other resources. Serverless functions or services are activated by events, such as HTTP requests, database updates, file uploads, or other custom events.
+
+Two components to using SAM:
+
+1. SAM template specification - closely follows the format of a CloudFormation template file, but simplified.
+2. SAM Command Line Interface - build and run serverless applications via templates.
+
+AWS SAM Workflow for building serverless apps:
+
+1. Define the application components / services required.
+2. Create the SAM template to define the resources and configurations.
+3. Define all lambda functions in a subdirectory.
+4. Define any additional resources / services in the SAM template.
+5. SAM package the application
+6. Deploy the application
+7. Test and monitor
+
+## Networking Considerations
+
