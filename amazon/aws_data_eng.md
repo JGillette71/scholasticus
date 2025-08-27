@@ -400,3 +400,104 @@ AWS SAM Workflow for building serverless apps:
 
 ## Networking Considerations
 
+Secure and reliable network connections are crucial to ensure data processing operates smoothly.
+
+**AWS site-to-site Virtual Private Network (VPN)** is a mandatory networking feature for hybrid-cloud environments ensuring encrypted communication between a Virtual Private Cloud (VPC) and on-prem resources. The site-to-site VPN includes the following:
+
+- VPN Gateway or Transit Gateway on the AWS VPC side.
+- Customer gateway resource in AWS.
+- Customer gateway device on the on-prem side.
+- Data transferred between the VPC and on-premises network is routed over the encrypted VPN connection.
+
+As an alternative, **AWS Direct Connect** establishes a private direct connection between VPC and on-prem infrastructure, avoiding the open internet. This allows for an increased and consistent network performance for more demanding workloads.
+
+Within a VPC, **VPC endpoints** allow AWS services to connect to each other without transiting the open internet. There are two types of VPC endpoints, (1) gateway endpoints and (2) interface endpoints.
+
+1. Gateway endpoints - These connect VPC specific resources to regional services like AWS S3 and DynamoDB through an AWS private network.
+
+2. Interface endpoints - Enable private connectivity to private AWS services from your VPC via **AWS Private Link**. This consists of elastic network interfaces with their own IP address and serve as an entrypoint to the target service.
+
+**AWS PrivateLink** is a feature that provides private connectivity between VPCs, AWS services, other AWS accounts, and supported AWS Marketplace partner services. You can use PrivateLink to access these services by using private IP addresses without exposing your traffic to the public internet.
+
+## Cost Optimization Tools
+
+### Common Cost Optimization Challenges
+
+- Data Volume and Variety
+- Fluctuating Scalability Requirements
+- Underutilized Resources
+- Complex analytical workloads require specialized services
+- Increased data movement and transit costs
+- Lack of cost monitoring and governance
+- Inefficiencies from skills gaps
+
+### Architecture based cost optimizations
+
+- Serverless compute options, i.e., pay for only the compute time used.
+- Enable auto-scaling of resources
+- Data lifecycle management for reduced costs of cold data
+- Query optimization
+- Resource monitoring and right-sizing
+
+### AWS Services for cost optimization
+
+- AWS Cost Explorer
+- AWS Budgets
+- AWS Data Transfer pricing tiers
+- AWS S3 Intelligence Tiering
+- Resource Auto-scaling
+- AWS Cost Anomaly Detection
+
+## Authentication & Authorization Tools
+
+Authentication - Who are you?
+
+Authorization - What are you permitted to do?
+
+Least privilege is considered a best practice. It involves defaulting to no permissions to all users, and then granting properly scoped access to individual users or groups as opposed to filtering out permissions from all users.
+
+Primary service for managing access is **AWS Identity and Access Management (IAM)**. It enforces the presentation of credentials for human users and software actors to access AWS services. The identity component answers the question of "who are you?" when access is attempted. Access management authorizes users to perform actions by granting or denying permissions via policies. In IAM, policies, groups, roles, and endpoints are essential components that work together to control access to AWS resources and services.
+
+**IAM Policies** are JSON formatted documents that define permissions for AWS resources and services. There are two types of IAM policies. (1) Identity-based policies and (2) Resource-based policies.
+
+1. Identity-based policies - attached to IAM users, groups, or roles to define which actions they can perform. (user-to-service)
+2. Resource-based policies - attached to AWS resources like S3 buckets or SNS topics to define which actions principals can perform on that resource. (service-to-person)
+
+Authorization of a user can be role-based, policy-based, tag-based, or attribute-based.
+
+- Role-based - grants access rights based on the roles or responsibilities of users within an organization.
+- Policy-based - grants access based on predefined policies that specify conditions for access control. Policies are typically set using JSON documents and attached to resources or users. (see above)
+- Tag-based - uses metadata tags assigned to resources to control access based on the tag's attributes. Tags could be department, project, or environment.
+- Attribute-based - dynamically evaluates access decisions based on multiple attributes. This includes attributes such as user roles, time of access, location, and device characteristics.
+
+**IAM Groups** are a collection of IAM users. IAM groups are used to simplify management of permissions for multiple users within a certain group, e.g. a team needs shared access to a specific resources.
+
+**IAM Roles** grant permissions to users, AWS services, and applications. Roles are similar to user accounts but are not associated with a specific person. Instead, they are intended to be assumed by trusted entities. There are two types of IAM roles (1) Service roles and (2) instance roles.
+
+1. Services roles - used by AWS services to perform actions on your behalf. For example, when you create a Lambda function, you need to assign an IAM role to it to grant the necessary permissions for the function to access other AWS resources.
+2. Instance roles - used by applications running on EC2 instances to access AWS services and resources securely without embedding long-term credentials.
+
+**IAM Endpoints** are entrypoints for AWS resources or services. When an IAM policy is created, the service's entrypoint is specified.
+
+### Managing Secrets
+
+Secrets refer to sensitive system information such as passwords, database credentials, API keys, and encryption keys. **AWS Secrets Manager** provides a centralized and secure way to manage your secrets throughout their lifecycle and reduces the risk of accidental exposure or unauthorized access.
+
+Key features include:
+
+- Secrets are encrypted using **AWS Key Management Service (KMS)**
+- Supports automatic rotation of secrets
+- Secrets can be accessed only by authorized principals (users, roles, or services) through IAM policies
+- Auditing and logging capabilities to track secret access and changes
+- Secrets can be centrally managed and shared across multiple applications and services running on AWS or on-prem
+- Support for resource based policies where permissions can be defined on the secrets directly
+
+### Example Authentication & Authorization Workflow
+
+1. Create an IAM user or role in the AWS Management Console
+2. Create a Secrets Manager secret in the AWS Management Console
+3. Create an AWS KMS key in the AWS Management Console to encrypt the secret stored in Secrets Manager.
+4. Grant the IAM user or role access to the secret stored in Secrets Manager using IAM, allowing the IAM user or role to read or write the secret.
+5. Rotate the encryption keys used to protect the secret stored in Secrets Manager using AWS KMS
+6. Use the IAM user or role to access the secret stored in Secrets Manager
+7. Now the IAM user or role can then use the secret to access the AWS resources that it grants access to.
